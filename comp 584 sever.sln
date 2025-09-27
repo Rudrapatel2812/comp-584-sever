@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36414.22 d17.14
+VisualStudioVersion = 17.14.36414.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "comp 584 sever", "comp 584 sever\comp 584 sever.csproj", "{FE2C36AB-DE6B-4F8F-8AB1-370284F1B5F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorldModel", "WorldModel\WorldModel.csproj", "{9575CD47-A45A-46B0-8200-7AF81A9121BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{FE2C36AB-DE6B-4F8F-8AB1-370284F1B5F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE2C36AB-DE6B-4F8F-8AB1-370284F1B5F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE2C36AB-DE6B-4F8F-8AB1-370284F1B5F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9575CD47-A45A-46B0-8200-7AF81A9121BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9575CD47-A45A-46B0-8200-7AF81A9121BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9575CD47-A45A-46B0-8200-7AF81A9121BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9575CD47-A45A-46B0-8200-7AF81A9121BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
