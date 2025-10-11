@@ -17,7 +17,7 @@ public partial class City
     public int CountryId { get; set; }
 
     [Column("name")]
-    [StringLength(10)]
+    [StringLength(100)]
     public string Name { get; set; } = null!;
 
     [Column("lat")]

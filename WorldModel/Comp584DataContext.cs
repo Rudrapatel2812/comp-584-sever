@@ -24,13 +24,17 @@ public partial class Comp584DataContext : DbContext
     {
         IConfigurationBuilder builder = new ConfigurationBuilder()
             .AddJsonFile("appsettings.json").AddJsonFile("appsettings.Development.json", optional:true);
+        IConfigurationRoot config = builder.Build();
+        if (!optionsBuilder.IsConfigured)
+        {
+            optionsBuilder.UseSqlServer(config.GetConnectionString("DefaultConnection"));
+        }
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<City>(entity =>
         {
-            entity.Property(e => e.Name).IsFixedLength();
 
             entity.HasOne(d => d.Country).WithMany(p => p.Cities)
                 .OnDelete(DeleteBehavior.ClientSetNull)
