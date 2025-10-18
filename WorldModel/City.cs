@@ -27,7 +27,7 @@ public partial class City
     public int Lng { get; set; }
 
     [Column("population")]
-    public int Population { get; set; }
+    public long Population { get; set; }
 
     [ForeignKey("CountryId")]
     [InverseProperty("Cities")]
