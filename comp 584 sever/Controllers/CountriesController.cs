@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using comp_584_sever.DTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -19,7 +20,25 @@ namespace comp_584_sever.Controllers
         public async Task<ActionResult<IEnumerable<Country>>> GetCountries()
         {
             return await context.Countries.ToListAsync();
+
         }
+
+        [HttpGet("population")]
+        public async Task<ActionResult<IEnumerable<CountryPopulation>>> GetCountriesPopulation()
+        {
+            return await context.Countries
+                .Select(c => new CountryPopulation
+                {
+                    Id = c.Id,
+                    Name = c.Name,
+                    Iso2 = c.Iso2,
+                    Iso3 = c.Iso3,
+                    Population = c.Cities.Sum(city => city.Population)
+                })
+                .ToListAsync();
+
+        }
+
 
         // GET: api/Countries/5
         [HttpGet("{id}")]
@@ -33,6 +52,34 @@ namespace comp_584_sever.Controllers
             }
 
             return country;
+        }
+
+        [HttpGet("Population/{id}")]
+        public ActionResult<CountryPopulation> GetCountryPopulation(int id)
+        {
+            var x = context.Countries.Select(country => new CountryPopulation
+            {
+                Id = country.Id,
+                Name = country.Name,
+                Iso2 = country.Iso2,
+                Iso3 = country.Iso3,
+                Population = country.Cities.Sum(city => city.Population)
+            });
+            foreach (var item in x)
+            {
+                Console.WriteLine($"{item.Id} {item.Name} {item.Population}");
+            }
+
+
+            return context.Countries.Select(country => new CountryPopulation
+            {
+                Id = country.Id,
+                Name = country.Name,
+                Iso2 = country.Iso2,
+                Iso3 = country.Iso3,
+                Population = country.Cities.Sum(city => city.Population)
+            }).Single(c => c.Id == id);
+
         }
 
         // PUT: api/Countries/5
