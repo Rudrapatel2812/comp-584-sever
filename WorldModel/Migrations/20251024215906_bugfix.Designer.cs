@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WorldModel;
 
@@ -10,9 +11,11 @@ using WorldModel;
 namespace WorldModel.Migrations
 {
     [DbContext(typeof(Comp584DataContext))]
-    partial class Comp584DataContextModelSnapshot : ModelSnapshot
+    [Migration("20251024215906_bugfix")]
+    partial class bugfix
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
