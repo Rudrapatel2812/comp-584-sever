@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WorldModel.Migrations
+namespace WorldModel
 {
     public class WorldModelUser : IdentityUser
     {

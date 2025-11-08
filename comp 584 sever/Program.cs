@@ -1,4 +1,6 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using WorldModel;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +13,12 @@ builder.Services.AddOpenApi();
 builder.Services.AddDbContext<Comp584DataContext>(c=>
     c.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))  
 );
+builder.Services.AddIdentity<WorldModelUser, IdentityRole>(options =>
+{
+    options.Password.RequireDigit = true;
+
+})
+    .AddEntityFrameworkStores<Comp584DataContext>();
 
 builder.Services.AddSwaggerGen();
 
@@ -24,6 +32,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 app.UseCors(options=>options.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
