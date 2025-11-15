@@ -1,3 +1,4 @@
+using comp_584_sever;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,6 +21,7 @@ builder.Services.AddIdentity<WorldModelUser, IdentityRole>(options =>
 })
     .AddEntityFrameworkStores<Comp584DataContext>();
 
+builder.Services.AddScoped<JwtHandler>();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
